@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    border-color: green;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #286f92 0%, #f8fcff 100%);
+    color: #0f172a;
+    line-height: 1.7;
+}
+
+.resume-card {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 2rem;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+}
+
+.resume-header {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.header-left {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 240px;
+    height: 240px;
+    padding: 0.75rem;
+    background: #d5f4ff;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.25rem solid #7dd3fc;
+    position: sticky;
+    top: 2rem;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+.header-left h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
+}
+
+.role {
+    margin: 0;
+    color: #2563eb;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.header-right {
+    display: grid;
+    gap: 1rem;
+}
+
+.summary {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #334155;
+}
+
+.contact-list p {
+    margin: 0.4rem 0;
+    color: #475569;
+}
+
+.contact-list strong {
+    color: #0f172a;
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+}
+
+.sidebar,
+.content {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.resume-section {
+    background: #f8fbff;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid #dbeafe;
+}
+
+.resume-section h2 {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+    color: #0f172a;
+    position: relative;
+}
+
+.resume-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #7dd3fc;
+    border-radius: 999px;
+    margin-top: 0.75rem;
+}
+
+.resume-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resume-section li {
+    margin-bottom: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+.qualification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.qualification-table th,
+.qualification-table td {
+    padding: 0.95rem 1rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.qualification-table thead {
+    background: #eff6ff;
+}
+
+.qualification-table tr:nth-child(even) {
+    background: #f8fbff;
+}
+
+.qualification-table th {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.resume-item {
+    margin-bottom: 1.25rem;
+}
+
+.resume-item h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.resume-item span {
+    display: inline-block;
+    margin-top: 0.35rem;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.resume-item p {
+    margin: 0.75rem 0 0;
+    color: #334155;
+}
+
+@media (max-width: 900px) {
+    .resume-header,
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-card {
+        padding: 1.5rem;
+    }
+
+    .photo-frame {
+        width: 180px;
+        height: 180px;
+        margin: 0auto;
+    }
+}
