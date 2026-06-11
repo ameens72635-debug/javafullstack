@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Syed Ameen | Resume</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(-45deg, #1e3a8a, #2563eb, #9333ea, #f43f5e);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      color: #f8fafc;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 20px rgba(255,255,255,0.8);
+    }
+    .tagline {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #e0f2fe;
+    }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      transition: transform 0.6s ease;
+    }
+    .profile-pic:hover {
+      transform: rotate(12deg) scale(1.1);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 28px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+    .card p, .card a {
+      color: #f1f5f9;
+      font-size: 1rem;
+    }
+    .card a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-badge {
+      background: linear-gradient(135deg, #2563eb, #9333ea);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 0 12px rgba(147, 51, 234, 0.6);
+      transition: 0.3s ease;
+    }
+    .skill-badge:hover {
+      transform: scale(1.15) rotate(-4deg);
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.9);
+    }
+
+    .strength {
+      border-left: 6px solid #38bdf8;
+    }
+    .weakness {
+      border-left: 6px solid #fb923c;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #f1f5f9;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <img src="ameen.jpeg" alt="Profile Photo" class="profile-pic">
+    <h1>Syed Ameen</h1>
+    <p class="tagline">Aspiring Java Full Stack Developer</p>
+  </header>
+
+  <!-- Personal Info -->
+  <section class="card">
+    <h2>Personal Information</h2>
+    <p>📍 Location: Chittoor, Andhra Pradesh, India</p>
+    <p>📧 Email: <a href="mailto:ameens72635@gmail.com">ameens72635@gmail.com</a></p>
+    <p>📞 Phone: <a href="tel:9483296980">9483296980</a></p>
+  </section>
+
+  <!-- Education -->
+  <section class="card">
+    <h2>Education</h2>
+    <p>B.Tech (Electrical and Electronics Engineering)</p>
+    <p>Currently in 3rd Year</p>
+    <p>CGPA: 8.5</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="card">
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <span class="skill-badge">Java</span>
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">MySQL</span>
+      <span class="skill-badge">HTML</span>
+      <span class="skill-badge">CSS</span>
+      <span class="skill-badge">Web Development</span>
+      <span class="skill-badge">Java Full Stack (Learning)</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="card">
+    <h2>Projects</h2>
+    <p>Employee Leave Management System</p>
+  </section>
+
+  <!-- Strengths -->
+  <section class="card strength">
+    <h2>Strengths</h2>
+    <p>Quick Learner, Problem Solver, Team Player</p>
+  </section>
+
+  <!-- Weaknesses -->
+  <section class="card weakness">
+    <h2>Weaknesses</h2>
+    <p>Perfectionist, Sometimes Overthinks</p>
+  </section>
+
+  <!-- Professional Profiles -->
+  <section class="card">
+    <h2>Professional Profiles</h2>
+    <p>🔗 <a href="https://www.linkedin.com/in/syed-ameen-881496389" target="_blank">LinkedIn Profile</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Made with ❤️ by Syed Ameen</p>
+  </footer>
+</body>
+</html>
