@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>Syed Ameen | Resume</title>
   <style>
+    /* Moving gradient background */
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(-45deg, #1e3a8a, #2563eb, #9333ea, #f43f5e);
+      background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
       background-size: 400% 400%;
       animation: gradientMove 12s ease infinite;
-      color: #f8fafc;
+      color: #fff;
     }
     @keyframes gradientMove {
       0% {background-position: 0% 50%;}
@@ -19,16 +19,15 @@
       100% {background-position: 0% 50%;}
     }
 
-    .hero {
+    header {
       text-align: center;
       padding: 60px 20px;
-      color: #fff;
     }
-    .hero h1 {
+    header h1 {
       font-size: 3rem;
-      text-shadow: 0 0 20px rgba(255,255,255,0.8);
+      text-shadow: 0 0 25px #fff;
     }
-    .tagline {
+    header p {
       font-size: 1.2rem;
       margin-top: 10px;
       color: #e0f2fe;
@@ -38,142 +37,151 @@
       height: 160px;
       border-radius: 50%;
       border: 4px solid #fff;
-      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      box-shadow: 0 0 30px #fff;
       transition: transform 0.6s ease;
     }
     .profile-pic:hover {
-      transform: rotate(12deg) scale(1.1);
+      transform: scale(1.2) rotate(12deg);
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      padding: 28px;
-      margin: 20px auto;
-      max-width: 800px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* Highlight sentences with glowing boxes */
+    .highlight {
+      display: inline-block;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin: 8px;
+      box-shadow: 0 0 20px #ff6ec4;
+      animation: pulse 3s infinite;
     }
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    @keyframes pulse {
+      0% {box-shadow: 0 0 10px #fff;}
+      50% {box-shadow: 0 0 30px #facc15;}
+      100% {box-shadow: 0 0 10px #fff;}
     }
-    .card h2 {
-      margin-top: 0;
+
+    section {
+      margin: 30px auto;
+      max-width: 900px;
+      background: rgba(0,0,0,0.4);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+    section h2 {
       color: #fff;
-      text-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
-    .card p, .card a {
-      color: #f1f5f9;
-      font-size: 1rem;
-    }
-    .card a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
-    .card a:hover {
-      text-decoration: underline;
+      text-shadow: 0 0 15px #4ade80;
     }
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .skill-badge {
-      background: linear-gradient(135deg, #2563eb, #9333ea);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      box-shadow: 0 0 12px rgba(147, 51, 234, 0.6);
-      transition: 0.3s ease;
-    }
-    .skill-badge:hover {
-      transform: scale(1.15) rotate(-4deg);
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.9);
-    }
-
-    .strength {
-      border-left: 6px solid #38bdf8;
-    }
-    .weakness {
-      border-left: 6px solid #fb923c;
-    }
-
-    .footer {
+    footer {
       text-align: center;
       padding: 20px;
-      color: #f1f5f9;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
       font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
+  <header>
     <img src="ameen.jpeg" alt="Profile Photo" class="profile-pic">
-    <h1>Syed Ameen</h1>
-    <p class="tagline">Aspiring Java Full Stack Developer</p>
+    <h1>SYED AMEEN</h1>
+    <p class="highlight">B.Tech (EEE) Student</p>
+    <p class="highlight">Aspiring Java Full Stack Developer</p>
   </header>
 
-  <!-- Personal Info -->
-  <section class="card">
-    <h2>Personal Information</h2>
-    <p>📍 Location: Chittoor, Andhra Pradesh, India</p>
-    <p>📧 Email: <a href="mailto:ameens72635@gmail.com">ameens72635@gmail.com</a></p>
-    <p>📞 Phone: <a href="tel:9483296980">9483296980</a></p>
+  <section>
+    <h2>About Me</h2>
+    <p class="highlight">Passionate engineering student focused on Java programming, web development, and continuous learning.</p>
   </section>
 
-  <!-- Education -->
-  <section class="card">
+  <section>
     <h2>Education</h2>
-    <p>B.Tech (Electrical and Electronics Engineering)</p>
-    <p>Currently in 3rd Year</p>
-    <p>CGPA: 8.5</p>
+    <p class="highlight">B.Tech – Electrical and Electronics Engineering (EEE), 3rd Year Student</p>
   </section>
 
-  <!-- Skills -->
-  <section class="card">
+  <section>
+    <h2>Career Objective</h2>
+    <p class="highlight">To become a skilled Java Full Stack Developer and build innovative software solutions.</p>
+  </section>
+
+  <section>
     <h2>Technical Skills</h2>
-    <div class="skills">
-      <span class="skill-badge">Java</span>
-      <span class="skill-badge">Python</span>
-      <span class="skill-badge">MySQL</span>
-      <span class="skill-badge">HTML</span>
-      <span class="skill-badge">CSS</span>
-      <span class="skill-badge">Web Development</span>
-      <span class="skill-badge">Java Full Stack (Learning)</span>
-    </div>
+    <p class="highlight">Java</p>
+    <p class="highlight">HTML</p>
+    <p class="highlight">CSS</p>
+    <p class="highlight">Web Development</p>
+    <p class="highlight">Front-End Development</p>
   </section>
 
-  <!-- Projects -->
-  <section class="card">
+  <section>
+    <h2>Programming Skills</h2>
+    <p class="highlight">Java</p>
+    <p class="highlight">Object-Oriented Programming (OOP)</p>
+    <p class="highlight">Data Structures</p>
+  </section>
+
+  <section>
+    <h2>Web Development</h2>
+    <p class="highlight">HTML5</p>
+    <p class="highlight">CSS3</p>
+    <p class="highlight">Responsive Web Design</p>
+  </section>
+
+  <section>
     <h2>Projects</h2>
-    <p>Employee Leave Management System</p>
+    <p class="highlight">Web Development Projects using HTML and CSS</p>
   </section>
 
-  <!-- Strengths -->
-  <section class="card strength">
+  <section>
+    <h2>Interview Preparation</h2>
+    <p class="highlight">Java Concepts</p>
+    <p class="highlight">Data Structures</p>
+    <p class="highlight">Problem Solving</p>
+  </section>
+
+  <section>
     <h2>Strengths</h2>
-    <p>Quick Learner, Problem Solver, Team Player</p>
+    <p class="highlight">Quick Learner</p>
+    <p class="highlight">Self-Motivated</p>
+    <p class="highlight">Consistent Learner</p>
+    <p class="highlight">Team Player</p>
   </section>
 
-  <!-- Weaknesses -->
-  <section class="card weakness">
-    <h2>Weaknesses</h2>
-    <p>Perfectionist, Sometimes Overthinks</p>
+  <section>
+    <h2>Areas of Interest</h2>
+    <p class="highlight">Java Development</p>
+    <p class="highlight">Full Stack Development</p>
+    <p class="highlight">Software Engineering</p>
   </section>
 
-  <!-- Professional Profiles -->
-  <section class="card">
-    <h2>Professional Profiles</h2>
-    <p>🔗 <a href="https://www.linkedin.com/in/syed-ameen-881496389" target="_blank">LinkedIn Profile</a></p>
+  <section>
+    <h2>Professional Goal</h2>
+    <p class="highlight">Java Full Stack Developer</p>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <section>
+    <h2>Languages</h2>
+    <p class="highlight">English</p>
+    <p class="highlight">Telugu</p>
+    <p class="highlight">Urdu</p>
+  </section>
+
+  <section>
+    <h2>Hobbies</h2>
+    <p class="highlight">Learning New Technologies</p>
+    <p class="highlight">Coding</p>
+    <p class="highlight">Building Web Pages</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p class="highlight">Phone: 9483296980</p>
+    <p class="highlight">Email: ameens72635@gmail.com</p>
+    <p class="highlight">LinkedIn: <a href="https://www.linkedin.com/in/syed-ameen-881496389" target="_blank" style="color:#93c5fd;">Profile</a></p>
+  </section>
+
+  <footer>
     <p>Made with ❤️ by Syed Ameen</p>
   </footer>
 </body>
