@@ -1,115 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ameen | Resume</title>
-    <link rel="stylesheet" href="persnal.css">
+  <meta charset="UTF-8">
+  <title>Syed Ameen | Resume</title>
+  <style>
+    /* Moving gradient background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      color: #fff;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 25px #fff;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #e0f2fe;
+    }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 0 30px #fff;
+      transition: transform 0.6s ease;
+    }
+    .profile-pic:hover {
+      transform: scale(1.2) rotate(12deg);
+    }
+
+    /* Highlight sentences with glowing boxes */
+    .highlight {
+      display: inline-block;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin: 8px;
+      box-shadow: 0 0 20px #ff6ec4;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0% {box-shadow: 0 0 10px #fff;}
+      50% {box-shadow: 0 0 30px #facc15;}
+      100% {box-shadow: 0 0 10px #fff;}
+    }
+
+    section {
+      margin: 30px auto;
+      max-width: 900px;
+      background: rgba(0,0,0,0.4);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+    section h2 {
+      color: #fff;
+      text-shadow: 0 0 15px #4ade80;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <main class="resume-card">
-        <header class="resume-header">
-            <div class="header-left">
-                <div class="photo-frame">
-                    <img src="ameen.jpeg" alt="Ameen profile photo">
-                </div>
-                <h1>Ameen</h1>
-                <p class="role">Web Design Student</p>
-            </div>
-            <div class="header-right">
-                <p class="summary">A creative learner who builds polished web pages using HTML and CSS. I focus on clear layouts, clean typography, and a strong visual structure that looks professional and readable.</p>
-                <div class="contact-list">
-                    <p><strong>Location:</strong> HTML files folder</p>
-                    <p><strong>Focus:</strong> HTML, CSS, responsive design</p>
-                    <p><strong>Personality:</strong> Creative, curious, detail-oriented</p>
-                </div>
-            </div>
-        </header>
+  <header>
+    <img src="ameen.jpeg" alt="Profile Photo" class="profile-pic">
+    <h1>SYED AMEEN</h1>
+    <p class="highlight">B.Tech (EEE) Student</p>
+    <p class="highlight">Aspiring Java Full Stack Developer</p>
+  </header>
 
-        <div class="resume-grid">
-            <aside class="sidebar">
-                <section class="resume-section">
-                    <h2>Skills</h2>
-                    <ul>
-                        <li>HTML structure & semantic tags</li>
-                        <li>CSS styling, layout & spacing</li>
-                        <li>Responsive design basics</li>
-                        <li>Image and text presentation</li>
-                        <li>Visual balance and color choice</li>
-                    </ul>
-                </section>
+  <section>
+    <h2>About Me</h2>
+    <p class="highlight">Passionate engineering student focused on Java programming, web development, and continuous learning.</p>
+  </section>
 
-                <section class="resume-section">
-                    <h2>Qualifications</h2>
-                    <table class="qualification-table">
-                        <thead>
-                            <tr>
-                                <th>Qualification</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Web Page Building</td>
-                                <td>Built multiple pages using HTML and CSS with clean structure.</td>
-                            </tr>
-                            <tr>
-                                <td>Layout Skills</td>
-                                <td>Applied box model, flexbox, and CSS grid for page design.</td>
-                            </tr>
-                            <tr>
-                                <td>Design Style</td>
-                                <td>Created profile and resume-style layouts with polished spacing.</td>
-                            </tr>
-                            <tr>
-                                <td>Typography</td>
-                                <td>Used modern font styling, headings, and readable text blocks.</td>
-                            </tr>
-                            <tr>
-                                <td>Code Quality</td>
-                                <td>Maintains clear markup and well-structured CSS styling.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </aside>
+  <section>
+    <h2>Education</h2>
+    <p class="highlight">B.Tech – Electrical and Electronics Engineering (EEE), 3rd Year Student</p>
+  </section>
 
-            <section class="content">
-                <section class="resume-section">
-                    <h2>Professional Summary</h2>
-                    <p>I am learning web design with a strong interest in turning simple ideas into attractive, user-friendly pages. I enjoy organizing content clearly and making my work feel polished like a resume or portfolio piece.</p>
-                </section>
+  <section>
+    <h2>Career Objective</h2>
+    <p class="highlight">To become a skilled Java Full Stack Developer and build innovative software solutions.</p>
+  </section>
 
-                <section class="resume-section">
-                    <h2>Experience</h2>
-                    <div class="resume-item">
-                        <h3>Web Design Learner</h3>
-                        <span>Current</span>
-                        <p>Practicing HTML and CSS to build clean page layouts, profile cards, and resume pages. Focused on improving presentation, spacing, and responsive behavior.</p>
-                    </div>
-                </section>
+  <section>
+    <h2>Technical Skills</h2>
+    <p class="highlight">Java</p>
+    <p class="highlight">HTML</p>
+    <p class="highlight">CSS</p>
+    <p class="highlight">Web Development</p>
+    <p class="highlight">Front-End Development</p>
+  </section>
 
-                <section class="resume-section">
-                    <h2>Education</h2>
-                    <div class="resume-item">
-                        <h3>Self-directed Web Design Study</h3>
-                        <span>Ongoing</span>
-                        <p>Learning foundational web development skills through hands-on HTML and CSS projects. Building a personal collection of pages that demonstrate design and layout abilities.</p>
-                    </div>
-                </section>
+  <section>
+    <h2>Programming Skills</h2>
+    <p class="highlight">Java</p>
+    <p class="highlight">Object-Oriented Programming (OOP)</p>
+    <p class="highlight">Data Structures</p>
+  </section>
 
-                <section class="resume-section">
-                    <h2>Learning Goals</h2>
-                    <ul>
-                        <li>Improve responsive page design</li>
-                        <li>Learn CSS animations and effects</li>
-                        <li>Create a professional online portfolio</li>
-                        <li>Practice better typography and spacing</li>
-                        <li>Showcase work in a resume-style format</li>
-                    </ul>
-                </section>
-            </section>
-        </div>
-    </main>
+  <section>
+    <h2>Web Development</h2>
+    <p class="highlight">HTML5</p>
+    <p class="highlight">CSS3</p>
+    <p class="highlight">Responsive Web Design</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <p class="highlight">Web Development Projects using HTML and CSS</p>
+  </section>
+
+  <section>
+    <h2>Interview Preparation</h2>
+    <p class="highlight">Java Concepts</p>
+    <p class="highlight">Data Structures</p>
+    <p class="highlight">Problem Solving</p>
+  </section>
+
+  <section>
+    <h2>Strengths</h2>
+    <p class="highlight">Quick Learner</p>
+    <p class="highlight">Self-Motivated</p>
+    <p class="highlight">Consistent Learner</p>
+    <p class="highlight">Team Player</p>
+  </section>
+
+  <section>
+    <h2>Areas of Interest</h2>
+    <p class="highlight">Java Development</p>
+    <p class="highlight">Full Stack Development</p>
+    <p class="highlight">Software Engineering</p>
+  </section>
+
+  <section>
+    <h2>Professional Goal</h2>
+    <p class="highlight">Java Full Stack Developer</p>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p class="highlight">English</p>
+    <p class="highlight">Telugu</p>
+    <p class="highlight">Urdu</p>
+  </section>
+
+  <section>
+    <h2>Hobbies</h2>
+    <p class="highlight">Learning New Technologies</p>
+    <p class="highlight">Coding</p>
+    <p class="highlight">Building Web Pages</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p class="highlight">Phone: 9483296980</p>
+    <p class="highlight">Email: ameens72635@gmail.com</p>
+    <p class="highlight">LinkedIn: <a href="https://www.linkedin.com/in/syed-ameen-881496389" target="_blank" style="color:#93c5fd;">Profile</a></p>
+  </section>
+
+  <footer>
+    <p>Made with ❤️ by Syed Ameen</p>
+  </footer>
 </body>
 </html>
