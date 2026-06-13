@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
+    <script>
+        let greeting = ["Good morning!", "Good afternoon!", "Good evening!", "Good night!"];
+        let num = 0;
+        function Greeting_afternoon(){
+            let text = document.getElementById("greet");
+            text.innerText =greeting[num];
+            num+=1;
+            if(num >3){
+                num = 0;
+            }
+            
+        }
+
+        function turn_on(){
+            let light = document.getElementById("on");
+            light.src = "ameen.jpeg";
+            console.log("Light is on");
+        }
+
+        function turn_off(){
+            let light = document.getElementById("on");
+            light.src = "ameen1.jpeg";
+            console.log("Light is off");
+        }
+
+        function change_Theme(){
+            if(document.body.style.backgroundColor === "black"){
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+            } else {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 id="Data">Form</h1>
+    <div>
+        <form action="add"></form>
+        <h1 id="greet">Good morning!</h1>
+        <img id="on" src="ameen.jpeg" alt="on" width="300">
+        
+        <button onclick="document.getElementById('on').src='off.jpeg'">Change Image</button>
+        <button onclick="turn_on()">Turn On</button>
+        <button onclick="turn_off()">Turn Off</button>
+        <button onclick="change_Theme()">Change Theme</button>
+        <button onclick="Greeting_afternoon()">Afternoon Greeting</button>
+    </div>
+</body>
+</html>
