@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #07141f 0%, #030606 55%, #000000 100%);
+  color: #f5f5ff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
+    url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-size: 140px 140px, 90px 90px, 220px 220px, auto;
+  animation: starMove 120s linear infinite;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+@keyframes starMove {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: -1200px 800px, 900px -1000px, -1700px 1200px, -800px 1400px;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  letter-spacing: 1px;
+  color: #70f1ff;
+}
+
+.brand p {
+  margin: 6px 0 0;
+  color: #b8f0ff;
+  font-size: 0.95rem;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  color: #cceeff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+.hero {
+  padding: 120px 40px 80px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 20px;
+  color: #86ffff;
+  text-shadow: 0 0 18px rgba(134, 255, 255, 0.35);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #d7eaff;
+  max-width: 760px;
+  margin: 0 auto 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00d4ff, #845bff);
+  color: #08101a;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+}
+
+.panel {
+  padding: 80px 40px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #8efcff;
+}
+
+.panel p {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 760px;
+}
+
+.skills-grid,
+.projects-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.skill-card,
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.skill-card:hover,
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(134, 255, 255, 0.4);
+  background: rgba(0, 55, 80, 0.75);
+}
+
+.skill-card {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e8f8ff;
+  text-align: center;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+}
+
+.project-card p {
+  margin: 0;
+  color: #dbeaff;
+}
+
+.mission-panel {
+  background: linear-gradient(135deg, rgba(0, 40, 70, 0.45), rgba(0, 20, 40, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.mission-panel p {
+  max-width: 840px;
+  font-size: 1.05rem;
+  color: #e4f6ff;
+}
+
+.contact-panel {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.contact-links {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-links a {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d7eeff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-links a:hover {
+  background: rgba(134, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 780px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .hero {
+    padding-top: 90px;
+  }
+
+  .panel {
+    padding: 60px 24px;
+  }
+}
