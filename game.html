@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health-Quick | LifeSaver 24/7</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0c1324 0%, #05070f 100%);
+      color: #eef2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .page-shell {
+      width: min(100%, 1020px);
+      background: linear-gradient(180deg, rgba(10, 18, 33, 0.95) 0%, rgba(24, 32, 62, 0.95) 100%);
+      border: 1px solid rgba(120, 145, 255, 0.15);
+      border-radius: 32px;
+      box-shadow: 0 30px 110px rgba(47, 118, 255, 0.25);
+      padding: 36px;
+    }
+
+    .top-bar {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .headline h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3.2vw, 3.6rem);
+      letter-spacing: 0.04em;
+      color: #ffffff;
+    }
+
+    .headline p {
+      margin: 18px 0 0;
+      color: #b8c7e0;
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .instructions-summary {
+      background: linear-gradient(180deg, rgba(79, 128, 255, 0.14), rgba(72, 211, 255, 0.08));
+      border: 1px solid rgba(116, 194, 255, 0.36);
+      border-radius: 24px;
+      padding: 22px;
+      color: #f0f6ff;
+      line-height: 1.75;
+      font-size: 0.98rem;
+      box-shadow: inset 0 0 18px rgba(95, 171, 255, 0.12);
+    }
+
+    .instructions-summary strong {
+      display: block;
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin: 14px 0 22px;
+    }
+
+    .emergency-button {
+      border: none;
+      border-radius: 20px;
+      padding: 18px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      outline: none;
+    }
+
+    .emergency-button:hover,
+    .emergency-button.active {
+      transform: translateY(-3px);
+      opacity: 0.98;
+      box-shadow: 0 20px 28px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .emergency-button span {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.98rem;
+      line-height: 1.25;
+    }
+
+    .emergency-button.bleeding { background: linear-gradient(135deg, #ff6b6b, #dc2f2f); }
+    .emergency-button.burns { background: linear-gradient(135deg, #ffb347, #ff6b35); }
+    .emergency-button.choking { background: linear-gradient(135deg, #4f9dff, #2563ff); }
+    .emergency-button.heart { background: linear-gradient(135deg, #ff618d, #b8276a); }
+    .emergency-button.stroke { background: linear-gradient(135deg, #8c8cff, #5058ff); }
+    .emergency-button.fever { background: linear-gradient(135deg, #ff8c42, #e05c2f); }
+    .emergency-button.headache { background: linear-gradient(135deg, #a47cff, #6f4eff); }
+    .emergency-button.backpain { background: linear-gradient(135deg, #ffaa6b, #db7f35); }
+    .emergency-button.stomach { background: linear-gradient(135deg, #ff8fc1, #d1567b); }
+    .emergency-button.cold { background: linear-gradient(135deg, #6cd1ff, #2d94ff); }
+    .emergency-button.allergy { background: linear-gradient(135deg, #b3ff8c, #6bbb4f); }
+    .emergency-button.meds { background: linear-gradient(135deg, #3bd6ff, #1f8cff); }
+    .emergency-button.hydration { background: linear-gradient(135deg, #60ff9a, #27bf71); }
+    .emergency-button.anxiety { background: linear-gradient(135deg, #ff7eb3, #ff5f91); }
+
+    .instruction-card {
+      border-radius: 28px;
+      padding: 32px;
+      background: linear-gradient(180deg, rgba(35, 47, 86, 0.95), rgba(12, 18, 43, 0.98));
+      border: 1px solid rgba(107, 151, 255, 0.26);
+      min-height: 360px;
+      color: #eef3ff;
+      display: grid;
+      gap: 18px;
+      box-shadow: 0 20px 40px rgba(72, 107, 185, 0.22);
+    }
+
+    .instruction-card h2 {
+      margin: 0;
+      font-size: 1.65rem;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .instruction-card p {
+      margin: 0;
+      color: #d8e4ff;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .issue-image {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 2px solid rgba(120, 185, 255, 0.45);
+      box-shadow: 0 20px 46px rgba(63, 112, 208, 0.28);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #f5f7ff;
+      letter-spacing: 0.02em;
+    }
+
+    .detail-list,
+    .step-list {
+      margin: 0;
+      padding-left: 24px;
+      color: #eef3ff;
+    }
+
+    .detail-list li,
+    .step-list li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      color: #b8c7e0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-note strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 980px) {
+      .emergency-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .top-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .emergency-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="top-bar">
+      <div class="headline">
+        <h1>Health-Quick</h1>
+        <p>LifeSaver 24/7 gives fast guidance for first-aid and everyday health issues. Choose your problem to see simple steps, helpful food advice, medication guidance, and supportive information.</p>
+      </div>
+      <aside class="instructions-summary">
+        <strong>How to use</strong>
+        <p>1. Tap the issue that matches what you or someone else is feeling.</p>
+        <p>2. Read the detailed information and follow the suggested action steps.</p>
+        <p>3. For serious or worsening conditions, call local emergency services or see a doctor.</p>
+      </aside>
+    </section>
+
+    <div class="emergency-grid">
+      <button class="emergency-button bleeding" data-type="bleeding">🔴<span>Severe Bleeding</span></button>
+      <button class="emergency-button burns" data-type="burns">🔥<span>Burns</span></button>
+      <button class="emergency-button choking" data-type="choking">🫁<span>Choking</span></button>
+      <button class="emergency-button heart" data-type="heart">❤️<span>Heart Attack</span></button>
+      <button class="emergency-button stroke" data-type="stroke">⚡<span>Stroke</span></button>
+      <button class="emergency-button fever" data-type="fever">🤒<span>Fever</span></button>
+      <button class="emergency-button headache" data-type="headache">🤕<span>Headache</span></button>
+      <button class="emergency-button backpain" data-type="backpain">🦴<span>Back Pain</span></button>
+      <button class="emergency-button stomach" data-type="stomach">🤢<span>Stomach Pain</span></button>
+      <button class="emergency-button cold" data-type="cold">🥶<span>Cold / Cough</span></button>
+      <button class="emergency-button allergy" data-type="allergy">🌼<span>Allergy</span></button>
+      <button class="emergency-button meds" data-type="meds">💊<span>Medication</span></button>
+      <button class="emergency-button hydration" data-type="hydration">🍲<span>Food / Hydration</span></button>
+      <button class="emergency-button anxiety" data-type="anxiety">😟<span>Fear / Anxiety</span></button>
+    </div>
+
+    <div id="instruction-box" class="instruction-card">
+      <h2>Ready to help</h2>
+      <p class="issue-summary">Select a health issue above for instant steps and extended information. Each topic now includes a photo, a short summary, and at least ten lines of useful details.</p>
+      <img id="issueImage" class="issue-image" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80" alt="Health topic image">
+      <p class="section-title">What to know</p>
+      <ul id="detailList" class="detail-list">
+        <li>Select a topic to see detailed health information.</li>
+      </ul>
+      <p class="section-title">Quick action steps</p>
+      <ul id="stepList" class="step-list">
+        <li>Select a topic to see the first three steps.</li>
+      </ul>
+    </div>
+
+    <p class="footer-note"><strong>Note:</strong> This guide is a quick reference only. If you are unsure, stay calm, keep the person safe, and call local emergency services immediately.</p>
+  </main>
+
+  <script>
+    const firstAidData = {
+      bleeding: {
+        title: 'Severe Bleeding',
+        image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Severe bleeding can be life-threatening. Fast pressure and proper care can prevent major blood loss and shock.',
+        details: [
+          'Severe bleeding may come from deep cuts, crush injuries, or damaged vessels.',
+          'The first priority is to stop the bleeding with direct pressure.',
+          'Use a clean cloth, towel, or bandage to apply firm pressure over the wound.',
+          'Keep the injured area elevated if possible to reduce blood flow.',
+          'Do not remove a soaked cloth; add more layers on top if needed.',
+          'If the bleeding is from the arm or leg, a pressure bandage can help keep the wound closed.',
+          'Try to keep the person calm to prevent faster heart rate and more bleeding.',
+          'Call emergency services immediately if bleeding does not stop quickly.',
+          'Avoid letting the person walk or move too much if the wound is serious.',
+          'When help arrives, tell them how long the bleeding has been going on.'
+        ],
+        steps: [
+          'Apply firm pressure with a clean cloth directly to the wound.',
+          'Keep the injured area elevated while maintaining pressure.',
+          'Call emergency services right away and wait for help.'
+        ]
+      },
+      burns: {
+        title: 'Burns',
+        image: 'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Burns need cooling and clean covering. Immediate care reduces pain and risk of infection.',
+        details: [
+          'Burns are caused by heat, chemicals, electricity, or sun exposure.',
+          'Cool the burn with running lukewarm water for at least 10 minutes.',
+          'Do not use ice directly on the burn because it can damage skin further.',
+          'After cooling, cover the burn with a clean, non-stick dressing.',
+          'Do not break blisters, as this increases the risk of infection.',
+          'Avoid applying butter, oils, or toothpaste to the burn.',
+          'If the burn is large, painful, or on the face, hands, or feet, seek medical help.',
+          'Keep the person comfortable and watch for signs of shock.',
+          'Pain relievers like acetaminophen can help with discomfort.',
+          'Prevent infection by keeping the burn area clean and dry.'
+        ],
+        steps: [
+          'Cool the burn with running lukewarm water for 10 minutes.',
+          'Cover it with a clean, non-stick cloth or sterile dressing.',
+          'Seek medical help if the burn is large or serious.'
+        ]
+      },
+      choking: {
+        title: 'Choking',
+        image: 'https://images.unsplash.com/photo-1580844076434-d7a1e3d0c3ac?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Choking is an airway emergency. Quick action can clear the object and save a life.',
+        details: [
+          'Choking happens when food or an object blocks the windpipe.',
+          'If the person can speak or cough, encourage them to cough hard.',
+          'If they cannot breathe, act immediately with back blows or abdominal thrusts.',
+          'For infants, use back blows and chest thrusts instead of abdominal thrusts.',
+          'Do not perform blind finger sweeps unless you can see the object clearly.',
+          'If the person becomes unconscious, begin CPR and call emergency services.',
+          'Remain calm and keep talking to the person in a gentle but firm voice.',
+          'Avoid giving drinks until the airway is clear and the person can swallow safely.',
+          'If the object is removed, monitor breathing and seek medical care if needed.',
+          'Teach children safe eating habits and cut food into small pieces.'
+        ],
+        steps: [
+          'Ask if the person can cough or breathe, and encourage coughing if possible.',
+          'Give 5 firm back blows between the shoulder blades.',
+          'If needed, perform abdominal thrusts until the airway clears.'
+        ]
+      },
+      heart: {
+        title: 'Heart Attack',
+        image: 'https://images.unsplash.com/photo-1516822003754-cca485356ecb?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Heart attack symptoms require immediate medical help. Quick action can reduce damage and improve outcomes.',
+        details: [
+          'Heart attack symptoms may include chest pain, sweating, and shortness of breath.',
+          'Some people feel nausea, jaw pain, or pain in the arm instead of chest pain.',
+          'Stay calm and call emergency services immediately.',
+          'Have the person sit comfortably and loosen tight clothing.',
+          'If available and not allergic, give aspirin if the person is conscious.',
+          'Avoid giving food or drinks until help arrives.',
+          'Do not let the person drive themselves to the hospital.',
+          'Monitor breathing and be ready to perform CPR if they lose consciousness.',
+          'Keep the person warm and reassured while waiting for help.',
+          'Know the local emergency number and provide it clearly to the dispatcher.'
+        ],
+        steps: [
+          'Call emergency services immediately and stay with the person.',
+          'Help them sit comfortably and loosen any tight clothing.',
+          'Give aspirin if they are conscious and not allergic.'
+        ]
+      },
+      stroke: {
+        title: 'Stroke',
+        image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80',
+        summary: 'A stroke is a time-sensitive emergency. Fast treatment can protect the brain from lasting damage.',
+        details: [
+          'Stroke symptoms may appear suddenly and include drooping face or slurred speech.',
+          'Use the FAST check: Face, Arms, Speech, Time.',
+          'If any signs appear, call emergency services immediately.',
+          'Do not give the person any food or drink.',
+          'Keep the person lying down with their head slightly raised.',
+          'Note the exact time when symptoms began.',
+          'Stay calm and reassure the person while help is on the way.',
+          'Avoid moving the person unless necessary for safety.',
+          'If they become unconscious, begin CPR if trained.',
+          'Any delay can worsen the outcome, so act quickly.'
+        ],
+        steps: [
+          'Check for face drooping, arm weakness, and slurred speech.',
+          'Call emergency services right away if any sign is present.',
+          'Keep the person calm and do not give food or drink.'
+        ]
+      },
+      fever: {
+        title: 'Fever',
+        image: 'https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Fever is the body’s response to infection. Good rest, fluids, and gentle care help recovery.',
+        details: [
+          'A fever is a temperature above 38°C (100.4°F).',
+          'It often occurs with colds, flu, or infections.',
+          'Rest is important so the body can fight the cause.',
+          'Drink plenty of water, electrolyte drinks, or warm broth.',
+          'Light clothing and a comfortable room temperature help reduce discomfort.',
+          'Use fever reducers like acetaminophen or ibuprofen as directed.',
+          'Avoid heavy, spicy, or fatty foods while the fever lasts.',
+          'Cool the forehead with a damp cloth or sponge if needed.',
+          'Monitor the temperature regularly and note any changes.',
+          'Seek medical advice if fever stays high or lasts more than a couple of days.'
+        ],
+        steps: [
+          'Rest in a comfortable place and drink plenty of fluids.',
+          'Take acetaminophen or ibuprofen if needed and appropriate.',
+          'Avoid heavy, spicy, or greasy foods until the fever goes down.'
+        ]
+      },
+      headache: {
+        title: 'Headache',
+        image: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Headaches can come from stress, dehydration, or screen time. Simple rest and hydration often help.',
+        details: [
+          'Headaches can be caused by tension, dehydration, or tiredness.',
+          'Rest in a quiet, dim room to reduce sensory strain.',
+          'Drink water to stay hydrated and avoid caffeine if it worsens the pain.',
+          'Use cold or warm compresses on the forehead or neck.',
+          'Take a mild pain reliever like acetaminophen or ibuprofen if needed.',
+          'Avoid strong smells and loud noises while the headache persists.',
+          'Limit screen time and take breaks from bright lights.'
+          , 'Try gentle neck stretches and good posture to relieve tension.',
+          'Avoid salty or processed foods if you suspect a migraine.',
+          'If the headache is sudden or severe, seek medical attention.'
+        ],
+        steps: [
+          'Rest in a quiet, dim room and drink water.',
+          'Take a mild pain reliever if needed and appropriate.',
+          'Avoid caffeine and bright screens until the pain eases.'
+        ]
+      },
+      backpain: {
+        title: 'Back Pain',
+        image: 'https://images.unsplash.com/photo-1559757175-5709d16b5e05?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Back pain is common and often improves with gentle movement, heat, and mild medication.',
+        details: [
+          'Back pain can result from muscle strain or poor posture.',
+          'Avoid heavy lifting and sudden twisting motions.',
+          'Try gentle stretching and walking to keep your spine mobile.',
+          'Use a warm compress on the painful area to relax muscles.',
+          'Take an over-the-counter pain reliever if needed and safe.',
+          'Stay hydrated to support healthy discs and tissue.',
+          'Avoid hard, greasy, or inflammatory foods when pain is active.',
+          'Use a supportive chair and avoid sitting for long periods.',
+          'Sleep on a comfortable mattress with good back support.',
+          'See a healthcare provider if pain persists or is severe.'
+        ],
+        steps: [
+          'Do gentle back stretches and avoid heavy lifting.',
+          'Use a warm compress and take a pain relief tablet if needed.',
+          'Stay hydrated and resting in a comfortable position.'
+        ]
+      },
+      stomach: {
+        title: 'Stomach Pain',
+        image: 'https://images.unsplash.com/photo-1505253217766-622f8ab3d1c2?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Stomach pain is often relieved with bland foods, hydration, and avoiding irritants.',
+        details: [
+          'Stomach pain can come from indigestion, gas, or mild infection.',
+          'Drink water, ginger tea, or clear broth to stay hydrated.',
+          'Eat small amounts of bland foods like toast, rice, or bananas.',
+          'Avoid spicy, fatty, or dairy foods until the stomach settles.',
+          'Use an antacid tablet if the pain is related to heartburn.',
+          'Rest and avoid intense exercise until you feel better.',
+          'Avoid alcohol, caffeine, and carbonated drinks for a while.',
+          'Keep track of foods that trigger symptoms so you can avoid them.',
+          'Try deep breathing to help relax abdominal muscles.',
+          'See a doctor if the pain is severe, persistent, or comes with fever.'
+        ],
+        steps: [
+          'Drink water and eat bland foods like toast or rice.',
+          'Take an antacid if the pain is related to indigestion.',
+          'Avoid spicy, fatty, or dairy foods until you feel better.'
+        ]
+      },
+      cold: {
+        title: 'Cold / Cough',
+        image: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Cold and cough symptoms improve with rest, warm fluids, and symptom relief medications.',
+        details: [
+          'Cold symptoms include a runny nose, sore throat, and cough.',
+          'Drink warm fluids like herbal tea, broth, or honey water.',
+          'Rest often to help your immune system recover.',
+          'Use throat lozenges or salt water gargles for a sore throat.',
+          'Take a cough suppressant or decongestant if needed.',
+          'Avoid cold drinks and heavy dairy foods that may thicken mucus.',
+          'Keep the room humid and breathe gently through your nose.',
+          'Wash hands frequently to prevent spreading germs.',
+          'Eat soft fruits and vegetables high in vitamin C when you can.',
+          'See a doctor if fever is high or symptoms get worse.'
+        ],
+        steps: [
+          'Rest and drink warm fluids like tea or broth.',
+          'Take a cough suppressant or cold medicine if needed.',
+          'Avoid dairy and cold drinks until mucus improves.'
+        ]
+      },
+      allergy: {
+        title: 'Allergy',
+        image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Allergies are managed by avoiding triggers and using antihistamines when needed.',
+        details: [
+          'Allergy symptoms include sneezing, itching, and watery eyes.',
+          'Identify and avoid the trigger whenever possible.',
+          'Move to fresh air if pollen, dust, or strong smells cause symptoms.',
+          'Take an antihistamine tablet if you have one available.',
+          'Avoid common food allergens like nuts, shellfish, and dairy if unsure.',
+          'Keep windows closed during high pollen days and shower after being outside.',
+          'Use a clean, damp cloth to wipe away allergens on skin and surfaces.',
+          'Stay hydrated to help your body flush allergens.',
+          'Rest and avoid heavy activity if symptoms are strong.',
+          'Seek medical help if breathing becomes difficult or swelling occurs.'
+        ],
+        steps: [
+          'Avoid the allergy trigger and move to fresh air.',
+          'Take an antihistamine if available.',
+          'Avoid foods that commonly cause allergies if unsure.'
+        ]
+      },
+      meds: {
+        title: 'Medication',
+        image: 'https://images.unsplash.com/photo-1511018556346-cd9f8d4fdffd?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Medication safety means taking the right dose at the right time and avoiding harmful combinations.',
+        details: [
+          'Read the label carefully for dose, timing, and warnings.',
+          'Take pills with a full glass of water unless directed otherwise.',
+          'Do not mix different medicines without asking a healthcare provider.',
+          'Avoid alcohol if the medication label warns against it.',
+          'Keep a list of all medicines you take, including vitamins and supplements.',
+          'Store medication in a cool, dry place away from children.',
+          'Take antibiotics exactly as prescribed, even if you feel better.',
+          'Do not share prescription medicines with others.',
+          'If you feel dizzy or sick after a tablet, stop and contact a doctor.',
+          'Ask a pharmacist if you are unsure about drug interactions.'
+        ],
+        steps: [
+          'Read the medicine label and take the correct dose with water.',
+          'Do not mix medicines without checking with a doctor or pharmacist.',
+          'Avoid alcohol or foods that interact with your medicine.'
+        ]
+      },
+      hydration: {
+        title: 'Food / Hydration',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Good hydration and healthy food choices support healing and energy during illness.',
+        details: [
+          'Drink water throughout the day to stay hydrated.',
+          'Choose light foods like soup, toast, and fruit when you feel unwell.',
+          'Avoid greasy, heavy, or very sweet foods if your stomach is upset.',
+          'Include fresh vegetables and lean protein when possible.',
+          'For fever or dehydration, try electrolyte drinks or coconut water.',
+          'Avoid too much caffeine, as it can dehydrate you further.',
+          'Eat slowly and in small portions if you are nauseous.',
+          'Keep snacks like bananas, crackers, or plain rice on hand.',
+          'Rest between meals and avoid lying down immediately after eating.',
+          'Monitor how foods make you feel and avoid triggers for future meals.'
+        ],
+        steps: [
+          'Drink water often and choose light, balanced foods.',
+          'Eat easy-to-digest items like broth, toast, or fruit.',
+          'Avoid heavy, greasy, or very sweet foods when unwell.'
+        ]
+      },
+      anxiety: {
+        title: 'Fear / Anxiety',
+        image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+        summary: 'Anxiety can feel overwhelming, but calming breathing and gentle support can help reduce symptoms.',
+        details: [
+          'Anxiety often causes a racing heart, tense muscles, and rapid breathing.',
+          'Take slow, deep breaths in through the nose and out through the mouth.',
+          'Sit or lie down in a quiet, comfortable place.',
+          'Talk to someone you trust and let them know how you feel.',
+          'Focus on what you can control, such as breath and posture.',
+          'Avoid caffeine, energy drinks, and sugary snacks during anxiety.',
+          'Try grounding by naming things you can see, hear, and feel.',
+          'Use a stress ball or gentle stretching to release tension.',
+          'Remember that anxiety symptoms usually pass with time.',
+          'Seek support from a friend, family member, or healthcare provider if needed.'
+        ],
+        steps: [
+          'Sit calmly and breathe slowly, focusing on your breath.',
+          'Try grounding by naming 3 things you can see, hear, and feel.',
+          'Avoid caffeine and sugary snacks if you feel nervous or shaky.'
+        ]
+      }
+    };
+
+    const instructionBox = document.getElementById('instruction-box');
+    const issueImage = document.getElementById('issueImage');
+    const detailList = document.getElementById('detailList');
+    const stepList = document.getElementById('stepList');
+    const buttons = document.querySelectorAll('.emergency-button');
+
+    function clearActiveButtons() {
+      buttons.forEach(btn => btn.classList.remove('active'));
+    }
+
+    function populateList(element, items) {
+      element.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function showInstructions(type) {
+      const data = firstAidData[type];
+      issueImage.src = data.image;
+      issueImage.hidden = false;
+      instructionBox.querySelector('.issue-summary').textContent = data.summary;
+      populateList(detailList, data.details);
+      populateList(stepList, data.steps);
+      instructionBox.querySelector('h2').textContent = data.title;
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        clearActiveButtons();
+        button.classList.add('active');
+        const type = button.dataset.type;
+        showInstructions(type);
+      });
+    });
+  </script>
+</body>
+</html>
